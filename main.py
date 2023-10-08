@@ -19,10 +19,6 @@ class Main(QMainWindow, gui.Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Web Scraper")
 
-        # # Connect button trigger
-        # self.connect_text.setText("")
-        # self.connect_btn.clicked.connect(self.connect_script)
-
         # Exit button
         self.exit_btn.clicked.connect(self.exit_script)
 
@@ -52,30 +48,7 @@ class Main(QMainWindow, gui.Ui_MainWindow):
         # Output directory button
         # self.output_btn.clicked.connect(self.output_directory)
 
-    # def user_agent(self):
-    #     '''User Agents for human like experience'''
-    #     lst = [
-    #         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246',
-    #         'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36',
-    #         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9',
-    #         'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',
-    #         'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1']
-    #     user_agent = random.choice(lst)
-    #     return user_agent
-
-    # def connect_script(self):
-    #     '''This show the status of website connected status in the connect_text line adjacent to connect button'''
-    #     url = 'https://www.blake-uk.com'
-    #     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246'}
-    #     try:
-    #         response = httpx.get(url, headers=headers)
-    #         if response.status_code == 200:
-    #             self.connect_text.setText("Connected!")
-    #         else:
-    #             self.connect_text.setText("Not Connected!")
-    #     except httpx.RequestError as e:
-    #         self.connect_text.setText(f'Failed to connect: {e}')
-
+   
     def fetch_links_script(self):
         '''
         Extract list of all url, last modified date and update frequency from sitemap.
@@ -160,29 +133,7 @@ class Main(QMainWindow, gui.Ui_MainWindow):
         if table is None:
             return {}
         rows = table.css('tr')
-        # headers = [x for x in site.css_first('.product-page__table:first-of-type tr')]
-        #
-        # result = []
-        # for row in rows:
-        #     cols = row.css('td') or row.css('th')
-        #     cols = [col.text(deep=True, strip=True) for col in cols]
-        #     result.append(cols)
-        # return result
-        # extract the headers from the first row
-        # header_cells = rows[0].css('th,td')
-        # headers = [cell.text() for cell in header_cells]
-        #
-        # # use dictionary comprehension to extract the data
-        # table_data = {
-        #     row.css('td')[0].text(): {
-        #         headers[j]: cell.text()
-        #         for j, cell in enumerate(row.css('td'))
-        #     }
-        #     for i, row in enumerate(rows)
-        #     if i > 0
-        # }
-        # return table_data
-
+       
         result = []
         for row in rows:
             cols = row.css('td') or row.css('th')
@@ -214,24 +165,11 @@ class Main(QMainWindow, gui.Ui_MainWindow):
             output.append(d)
         return {k: v for i in output for k,v in i.items()}
                 
-        # output = []
-        # item = [elem for sublist in
-        #         [[x.text().strip() for x in row.css('.product-page__list p:nth-child(2)')] for row in rows]
-        #         for elem in sublist]
-        # value = [elem for sublist in
-        #          [[x.text().strip() for x in row.css('.product-page__list p:nth-child(1)')] for row in rows]
-        #          for elem in sublist]
-        
-        # Optimize the code for pandas dataframe
-
     def max_rate_spinbox_change(self, value):
         self.max_rate_spinbox.setValue(value)
 
     def time_spinbox_change(self, value):
         self.time_spinbox.setValue(value)
-
-    # async def fetch_url_async(self, url):
-    #     return await asyncio.to_thread(self.fetch_url, url)
 
     async def scrape_urls(self):
         max_rate = self.max_rate_spinbox.value()
@@ -253,10 +191,6 @@ class Main(QMainWindow, gui.Ui_MainWindow):
         asyncio.run(self.scrape_urls())
 
     def excel_export(self, output, data):
-        # new_result = []
-        # for item in results:
-        #     if item is not None:
-        #         new_result.append(item)
         current_time = time.localtime()
         formatted_time = time.strftime('%d-%m-%y', current_time)
         writer = pd.ExcelWriter(f'output-{formatted_time}.xlsx', engine='xlsxwriter')

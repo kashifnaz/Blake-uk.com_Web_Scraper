@@ -1,11 +1,11 @@
 # Blake-uk.com Web Scraper
 
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
-![Dependencies](https://img.shields.io/badge/Dependencies-PySide6%2C%20Requests%2C%20lxml%2C%20selectolax%2C%20aiolimiter%2C%20Pandas-brightgreen)
+![Dependencies](https://img.shields.io/badge/Dependencies-PySide6%2C%20Requests%2C%20lxml%2C%20selectolax%2C%20aiolimiter%2C%20Pandas%2C%20XlsxWriter-brightgreen)
 
 ## Project Description
 
-The **Blake-uk.com Web Scraper** is a Python GUI application designed for efficiently scraping data from [Blake-uk.com](https://www.blake-uk.com/), a prominent online resource. This application is built using a powerful stack of dependencies, including PySide6 for creating a user-friendly graphical interface, Requests for handling HTTP requests, lxml for parsing XML, selectolax for efficient HTML parsing, aiolimiter for rate limiting, and Pandas for data manipulation and export to excel.
+The **Blake-uk.com Web Scraper** is a Python GUI application designed for efficiently scraping data from [Blake-uk.com](https://www.blake-uk.com/), a prominent online resource. This application is built using a powerful stack of dependencies, including PySide6 for creating a user-friendly graphical interface, Requests for handling HTTP requests, lxml for parsing XML, selectolax for efficient HTML parsing, aiolimiter for rate limiting, Pandas and XlsxWriter for data manipulation and export to excel.
 
 ![1](https://github.com/kashifnaz/Blake-uk.com_Web_Scraper/assets/39775989/d3d7ee7c-64c2-4359-8f47-e6e7d938f485)
 

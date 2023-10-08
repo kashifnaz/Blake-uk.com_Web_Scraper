@@ -45,9 +45,6 @@ class Main(QMainWindow, gui.Ui_MainWindow):
         self.time_spinbox.setValue(1)
         self.time_spinbox.valueChanged.connect(self.time_spinbox_change)
 
-        # Output directory button
-        # self.output_btn.clicked.connect(self.output_directory)
-
    
     def fetch_links_script(self):
         '''
